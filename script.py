@@ -9,7 +9,7 @@ try:
     if list(pastaDosArquivos)[-1] != "/":
         pastaDosArquivos += "/"
 
-    myFiles = glob.glob('%s*.txt' % pastaDosArquivos)
+    myFiles = glob.glob('{s}*.txt'.format(s = pastaDosArquivos))
     for file in myFiles:
         with open(file, 'r') as f:
             payload = {"action":"ajax_hash", "text":"%s" % f.read(), "algo":"md2"}
