@@ -2,25 +2,32 @@ import requests
 import re
 import glob
 import sys
+import os
 
 try:
     hashes = sys.argv[1]
     pastaDosArquivos = sys.argv[2]
-    if list(pastaDosArquivos)[-1] != "/":
-        pastaDosArquivos += "/"
+    if os.path.isfile(hashes) and os.path.isdir(pastaDosArquivos):
+        try:
+            if list(pastaDosArquivos)[-1] != "/":
+                    pastaDosArquivos += "/"
 
-    myFiles = glob.glob('{s}*.txt'.format(s = pastaDosArquivos))
-    for file in myFiles:
-        with open(file, 'r') as f:
-            payload = {"action":"ajax_hash", "text":"{s}".format(s = f.read()), "algo":"md2"}
-            r = requests.post("https://www.tools4noobs.com/", data=payload)
-            m = re.search('</b> (.+?)</div>', r.text)
-            if m:
-                found = m.group(1)
-            with open(hashes, 'r') as h:
-                hsh = h.read().split('\n')
-                if found not in hsh:
-                    print("Alterado --> ", file)
+            myFiles = glob.glob('{s}*.txt'.format(s=pastaDosArquivos))
+            for file in myFiles:
+                with open(file, 'r') as f:
+                    payload = {"action":"ajax_hash", "text":"{s}".format(s =f.read()), "algo":"md2"}
+                    r = requests.post("https://www.tools4noobs.com/", data=payload)
+                    m = re.search('</b> (.+?)</div>', r.text)
+                    if m:
+                        found = m.group(1)
+                    with open(hashes, 'r') as h:
+                        hsh = h.read().split('\n')
+                        if found not in hsh:
+                            print("Alterado --> ", file)
+        except IOError:
+            print("Arquivo não acessivel")
+    else:
+        print("Bad Input: o primeiro argumento deve ser um arquivo .txt e o segundo um diretório.")        
 except:
     print("""Uso: python script.py <hash> <pasta>
 
