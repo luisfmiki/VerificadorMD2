@@ -1,6 +1,5 @@
 import requests
 import re
-import glob
 import sys
 import os
 
@@ -10,9 +9,12 @@ try:
     if os.path.isfile(hashes) and os.path.isdir(pastaDosArquivos):
         try:
             if list(pastaDosArquivos)[-1] != "/":
-                    pastaDosArquivos += "/"
+                CamAbsoluto = os.getcwd() + "/" + pastaDosArquivos + "/"
+            else:
+                CamAbsoluto = os.getcwd() + "/" + pastaDosArquivos
 
-            myFiles = glob.glob('{s}*.txt'.format(s=pastaDosArquivos))
+            myFiles = [file for file in os.listdir(CamAbsoluto) if re.search('\.txt', file)]
+            
             for file in myFiles:
                 with open(file, 'r') as f:
                     payload = {"action":"ajax_hash", "text":"{s}".format(s =f.read()), "algo":"md2"}
