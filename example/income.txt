@@ -1,4 +1,4 @@
-INCOME 
+INCOME
 2016
 2015
 $
@@ -21,6 +21,6 @@ General fundraising
 Interest
 1000
 2000
-Total income 
+Total income
 22,000
 22,450
