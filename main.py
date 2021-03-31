@@ -16,7 +16,7 @@ try:
             myFiles = [file for file in os.listdir(CamAbsoluto) if re.search('\.txt', file)]
             
             for file in myFiles:
-                with open(file, 'r') as f:
+                with open(CamAbsoluto + file, 'r') as f:
                     payload = {"action":"ajax_hash", "text":"{s}".format(s = f.read()), "algo":"md2"}
                     r = requests.get("https://www.tools4noobs.com/", params=payload)
                     m = re.search('</b> (.+?)</div>', r.text)
