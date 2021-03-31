@@ -34,7 +34,7 @@ if [ -f $hashes ] && [ -d $pastaDosArquivos ]; then
 			echo "Alterado --> $msg"
 		fi
 		if [ $SECONDS -gt 10 ]; then
-			echo OBS: o tempo de exec. do script depende, sobretudo, da velocidade de sua rede
+			echo "OBS: o tempo de exec. do script depende, sobretudo, da velocidade de sua rede"
 		fi		
 	 	IFS=$IFSOLD
 		resultado=""		
