@@ -1,5 +1,5 @@
 
-Name|Zip Code|Email|Pin #
+Name|Zip Code|Email|Pin
 
 Germane Rutledge|60600|id.ante@etrutrum.ca|4782
 Alyssa Chandler|4001ZA|bibendum.sed.est@ultricesaauctor.org|3118
