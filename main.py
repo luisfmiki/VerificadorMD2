@@ -17,8 +17,8 @@ try:
             
             for file in myFiles:
                 with open(file, 'r') as f:
-                    payload = {"action":"ajax_hash", "text":"{s}".format(s =f.read()), "algo":"md2"}
-                    r = requests.post("https://www.tools4noobs.com/", data=payload)
+                    payload = {"action":"ajax_hash", "text":"{s}".format(s = f.read()), "algo":"md2"}
+                    r = requests.get("https://www.tools4noobs.com/", params=payload)
                     m = re.search('</b> (.+?)</div>', r.text)
                     if m:
                         found = m.group(1)
