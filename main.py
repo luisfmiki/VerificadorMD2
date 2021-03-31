@@ -17,15 +17,18 @@ try:
             
             for file in myFiles:
                 with open(CamAbsoluto + file, 'r') as f:
-                    payload = {"action":"ajax_hash", "text":"{s}".format(s = f.read()), "algo":"md2"}
-                    r = requests.get("https://www.tools4noobs.com/", params=payload)
-                    m = re.search('</b> (.+?)</div>', r.text)
-                    if m:
-                        found = m.group(1)
-                    with open(hashes, 'r') as h:
-                        hsh = h.read().split('\n')
-                        if found not in hsh:
-                            print("Alterado --> ", file)
+                    text = list(f.read())
+                if text[-1] == "\n":
+                    text.pop()
+                payload = {"action":"ajax_hash", "text":"{}".format("".join(text)), "algo":"md2"}
+                r = requests.get("https://www.tools4noobs.com/", params=payload)
+                m = re.search('</b> (.+?)</div>', r.text)
+                if m:
+                    found = m.group(1)
+                with open(hashes, 'r') as h:
+                    hsh = h.read().split('\n')
+                    if found not in hsh:
+                        print("Alterado --> ", file)
         except IOError:
             print("Arquivo não acessivel")
     else:
