@@ -1,5 +1,5 @@
 
-Name|Zip Code|Email|Pin #
+Name|Zip Code|Email|Pin
 
 Vanna Q. Nash|AM66 4LM|eget.ipsum.Donec@adipiscingligulaAenean.net|3694
 Randall Figueroa|04431|leo.elementum@Pellentesquehabitant.ca|5474
