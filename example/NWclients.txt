@@ -1,5 +1,5 @@
 
-Name|Zip Code|Email|Pin #
+Name|Zip Code|Email|Pin
 
 Stuart M. Barnes|3930|aliquam.iaculis.lacus@nec.ca|6893
 Tanya X. Sharp|5990|risus@ornare.co.uk|9285
