@@ -32,12 +32,12 @@ if [ -f $hashes ] && [ -d $pastaDosArquivos ]; then
 		if [ $status -eq 0 ]; then
 			msg=`echo "Alterado --> $arq" | grep -o "$pastaDosArquivos.\+txt"`
 			echo "Alterado --> $msg"
-		fi
-		if [ $SECONDS -gt 10 ]; then
-			echo "OBS: o tempo de exec. do script depende, sobretudo, da velocidade de sua rede"
-		fi		
+		fi	
 	 	IFS=$IFSOLD
 		resultado=""		
 	done
+	if [ $SECONDS -gt 10 ]; then
+		echo "OBS: o tempo de exec. do script depende, sobretudo, da velocidade de sua rede"
+	fi	
 fi
 
