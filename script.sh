@@ -27,6 +27,7 @@ if [ -f $hashes ] && [ -d $pastaDosArquivos ]; then
 		for hsh in `cat $PWD/$hashes`; do
 			if [ $hsh = $resultado ]; then
 				status=1
+				break
 			fi
 		done
 		if [ $status -eq 0 ]; then
