@@ -25,6 +25,7 @@ for linha in `cat $PWD/$hashes`;do
 done
 
 
+# adiciona a barra se o argumento do diretório vier sem
 if [ -f $hashes ] && [ -d $pastaDosArquivos ]; then
 	if [ "${pastaDosArquivos: -1}" != "/" ]; then
 	       CamAbsoluto=$PWD/$pastaDosArquivos/
@@ -38,6 +39,9 @@ IFS=$IFSOLD
 		#postReq $arq
 		resultado=`postReq $arq | grep -oP ' \K\w+(?=</div)'`
 		status=0
+		# quebra a iteração do arranjo lista_de_hash caso o valor de hash do arquivo bater
+		# com qualquer item do arranjo (necessesita de uma otimização do tipo dicionário
+		# usado em python)
 		for hsh in "${lista_de_hash[@]}"; do
 			if [ $hsh = $resultado ]; then
 				status=1
@@ -49,6 +53,8 @@ IFS=$IFSOLD
 		#if [ $hsh = $resultado\n ]; then
 		#		status=1
 		#	fi
+		# se o valor de hash não bater com nenhum do arquivo legitimo de hash
+		# então afirma-se que o atual arquivo foi modificado
 		if [ $status -eq 0 ]; then
 			msg=`echo "Alterado --> $arq" | grep -o "$pastaDosArquivos.\+txt"`
 			echo "Alterado --> $msg"
@@ -56,6 +62,7 @@ IFS=$IFSOLD
 		IFS=$IFSOLD	
 		resultado=""		
 	done
+	# aqui é uma consideração caso o volume de arquivos a serem verificados for muito grande
 	if [ $SECONDS -gt 10 ]; then
 		echo "OBS: o tempo de exec. do script depende, sobretudo, da velocidade de sua rede"
 	fi	
