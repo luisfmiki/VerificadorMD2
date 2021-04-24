@@ -8,10 +8,10 @@ try:
     pastaDosArquivos = sys.argv[2]
     if os.path.isfile(hashes) and os.path.isdir(pastaDosArquivos):
         try:
-            if list(pastaDosArquivos)[-1] != "/":
-                CamAbsoluto = os.getcwd() + "/" + pastaDosArquivos + "/"
+            if list(pastaDosArquivos)[-1] != "\":
+                CamAbsoluto = os.getcwd() + "\" + pastaDosArquivos + "\"
             else:
-                CamAbsoluto = os.getcwd() + "/" + pastaDosArquivos
+                CamAbsoluto = os.getcwd() + "\" + pastaDosArquivos
 
             myFiles = [file for file in os.listdir(CamAbsoluto) if re.search('\.txt', file)]
             
